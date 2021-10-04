@@ -39,9 +39,21 @@
                             <form action="{{ route('player.store') }}" method="post">
                                 @csrf
                                 <label for="nama" class="form-label">Nama</label>
-                                <input type="text" class="form-control" id="nama" name="nama">
+                                <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama"
+                                    name="nama">
+                                @error('nama')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                                 <label for="poin" class="form-label">Poin</label>
-                                <input type="number" class="form-control" id="poin" name="poin">
+                                <input type="number" class="form-control @error('poin') is-invalid @enderror" id="poin"
+                                    name="poin">
+                                @error('poin')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -76,8 +88,8 @@
                                 </button>
 
                                 <!-- Modal-->
-                                <div class="modal fade" id="edit{{ $player->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                    aria-hidden="true">
+                                <div class="modal fade" id="edit{{ $player->id }}" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -91,9 +103,23 @@
                                                     @csrf
                                                     @method('put')
                                                     <label for="nama" class="form-label">Nama</label>
-                                                    <input type="text" class="form-control" id="nama" name="nama" value="{{ $player->nama }}">
+                                                    <input type="text"
+                                                        class="form-control @error('nama') is-invalid @enderror"
+                                                        id="nama" name="nama" value="{{ $player->nama }}">
+                                                    @error('nama')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
                                                     <label for="poin" class="form-label">Poin</label>
-                                                    <input type="number" class="form-control" id="poin" name="poin" value="{{ $player->poin }}">
+                                                    <input type="number"
+                                                        class="form-control @error('poin') is-invalid @enderror"
+                                                        id="poin" name="poin" value="{{ $player->poin }}">
+                                                    @error('poin')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"

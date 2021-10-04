@@ -38,7 +38,7 @@ class PlayerController extends Controller
     {
         $validatedData = $request->validate([
             'nama' => ['required'],
-            'poin' => ['required']
+            'poin' => ['required', 'digits:6']
         ]);
         
         Player::create($validatedData);
