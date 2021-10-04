@@ -79,7 +79,7 @@ class PlayerController extends Controller
     {
         $validatedData = $request->validate([
             'nama' => ['required'],
-            'poin' => ['required']
+            'poin' => ['required', 'digits_between:1,6']
         ]);
 
         $player->update($validatedData);
